@@ -1,7 +1,20 @@
-function login() {
- var userEmail = document.getElementById("email_field").value;
- var userPass = document.getElementById("password_field").value;
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
 
- window.alert(userEmail + " " + userPass);
- 
+      document.getElementById("user_div").style.display = "initial";
+      document.getElementById("login_div").style.display = "none";
+    } else {
+      // No user is signed in.
+
+      document.getElementById("user_div").style.display = "none";
+
+      document.getElementById("login_div").style.display = "initial";
+    }
+  });
+function login() {
+    var userEmail = document.getElementById("email_field").value;
+    var userPass = document.getElementById("password_field").value;
+
+    alert(userEmail + " " + userPass);
 }
